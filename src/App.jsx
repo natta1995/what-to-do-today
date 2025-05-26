@@ -3,37 +3,27 @@ import { aktiviteter } from "./data/aktiviteter";
 
 function App() {
   const [budget, setBudget] = useState("Gratis");
-
-  const [uteCheckbox, setUteCheckbox] = useState(true);
-  const [inneCheckbox, setInneCheckbox] = useState(true);
-  const [bortaCheckbox, setBortaCheckbox] = useState(true);
-
   const [valdAktivitet, setValdAktivitet] = useState("");
 
+  const [plats, setPlats] = useState("inne");
+  const [läge, setLäge] = useState("hemma");
+
+  const filtrerade = aktiviteter.filter(
+    (aktivitet) =>
+      aktivitet.plats === plats &&
+      aktivitet.läge === läge &&
+      aktivitet.budget === budget
+  );
+
   function slumpaAktivitet() {
-    const filtrerade = aktiviteter.filter((aktivitet) => {
-      const platsMatch =
-        (uteCheckbox && aktivitet.plats === "ute") ||
-        (inneCheckbox && aktivitet.plats === "inne");
-  
-      const lägeMatch =
-        (bortaCheckbox && aktivitet.läge === "borta") ||
-        (!bortaCheckbox && aktivitet.läge === "hemma");
-  
-      const budgetMatch = aktivitet.budget === budget;
-  
-      return platsMatch && lägeMatch && budgetMatch;
-    });
-  
     if (filtrerade.length === 0) {
-      setValdAktivitet("Inga aktiviteter hittades för dina val.");
+      setValdAktivitet("Inga aktiviteter hittades.");
       return;
     }
-  
+
     const slumpIndex = Math.floor(Math.random() * filtrerade.length);
     setValdAktivitet(filtrerade[slumpIndex].text);
   }
-  
 
   return (
     <>
@@ -41,32 +31,47 @@ function App() {
         <h1> Vad skall jag göra idag? </h1>
       </div>
       <div>
-        <h5>Jag kan tänka mig att ....</h5>
-        <div>
+        <h5>Jag vill vara </h5>
+      </div>
+      <div>
+        <label>
           <input
-            type="checkbox"
-            id="ute"
-            checked={uteCheckbox}
-            onChange={() => setUteCheckbox(!uteCheckbox)}
+            type="radio"
+            value="hemma"
+            checked={läge === "hemma"}
+            onChange={(e) => setLäge(e.target.value)}
           />
-          <label>Vara utomhus</label>
-        </div>
-        <div>
+          Hemma
+        </label>
+        <label>
           <input
-            type="checkbox"
-            id="inne"
-            checked={inneCheckbox}
-            onChange={() => setInneCheckbox(!inneCheckbox)}
+            type="radio"
+            value="borta"
+            checked={läge === "borta"}
+            onChange={(e) => setLäge(e.target.value)}
           />
-          <label>Vara inomhus</label>
+          Borta
+        </label>
+      </div>
+      <div>
+        <label>
           <input
-            type="checkbox"
-            id="borta"
-            checked={bortaCheckbox}
-            onChange={() => setBortaCheckbox(!bortaCheckbox)}
+            type="radio"
+            value="inne"
+            checked={plats === "inne"}
+            onChange={(e) => setPlats(e.target.value)}
           />
-          <label>Åka iväg</label>
-        </div>
+          Inomhus
+        </label>
+        <label>
+          <input
+            type="radio"
+            value="ute"
+            checked={plats === "ute"}
+            onChange={(e) => setPlats(e.target.value)}
+          />
+          Utomhus
+        </label>
       </div>
       <div>
         <h5>Hur mycket vill du spendera?</h5>
@@ -85,11 +90,9 @@ function App() {
         </select>
       </div>
       <div>
-        <button onClick={slumpaAktivitet} > Slumpa </button>
+        <button onClick={slumpaAktivitet}> Slumpa </button>
       </div>
-      <div>
-      {valdAktivitet && <p>{valdAktivitet}</p>}
-      </div>
+      <div>{valdAktivitet && <p>{valdAktivitet}</p>}</div>
     </>
   );
 }

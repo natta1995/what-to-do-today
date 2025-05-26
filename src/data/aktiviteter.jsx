@@ -17,5 +17,23 @@ export const aktiviteter = [
         plats: "ute",
         läge: "borta",
         budget: "gratis"
-    }
+    },
+    {
+        text: "Åk och gör en heldag på ett nöljesfält",
+        plats: "ute",
+        läge: "borta",
+        budget: "medium"
+    },
+    {
+        text: "Heldag på spa",
+        plats: "inne",
+        läge: "borta",
+        budget: "high"
+    },
+    {
+        text: "Filmmaraton",
+        plats: "inne",
+        läge: "Hemma",
+        budget: "gratis"
+    },
 ]
