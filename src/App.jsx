@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { aktiviteter } from "./data/aktiviteter";
 
 function App() {
   const [budget, setBudget] = useState("Gratis");
@@ -6,6 +7,33 @@ function App() {
   const [uteCheckbox, setUteCheckbox] = useState(true);
   const [inneCheckbox, setInneCheckbox] = useState(true);
   const [bortaCheckbox, setBortaCheckbox] = useState(true);
+
+  const [valdAktivitet, setValdAktivitet] = useState("");
+
+  function slumpaAktivitet() {
+    const filtrerade = aktiviteter.filter((aktivitet) => {
+      const platsMatch =
+        (uteCheckbox && aktivitet.plats === "ute") ||
+        (inneCheckbox && aktivitet.plats === "inne");
+  
+      const lägeMatch =
+        (bortaCheckbox && aktivitet.läge === "borta") ||
+        (!bortaCheckbox && aktivitet.läge === "hemma");
+  
+      const budgetMatch = aktivitet.budget === budget;
+  
+      return platsMatch && lägeMatch && budgetMatch;
+    });
+  
+    if (filtrerade.length === 0) {
+      setValdAktivitet("Inga aktiviteter hittades för dina val.");
+      return;
+    }
+  
+    const slumpIndex = Math.floor(Math.random() * filtrerade.length);
+    setValdAktivitet(filtrerade[slumpIndex].text);
+  }
+  
 
   return (
     <>
@@ -57,7 +85,10 @@ function App() {
         </select>
       </div>
       <div>
-        <button> Slumpa </button>
+        <button onClick={slumpaAktivitet} > Slumpa </button>
+      </div>
+      <div>
+      {valdAktivitet && <p>{valdAktivitet}</p>}
       </div>
     </>
   );
