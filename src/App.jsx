@@ -3,6 +3,10 @@ import { useState } from "react";
 function App() {
   const [budget, setBudget] = useState("Gratis");
 
+  const [uteCheckbox, setUteCheckbox] = useState(true);
+  const [inneCheckbox, setInneCheckbox] = useState(true);
+  const [bortaCheckbox, setBortaCheckbox] = useState(true);
+
   return (
     <>
       <div>
@@ -11,13 +15,28 @@ function App() {
       <div>
         <h5>Jag kan tänka mig att ....</h5>
         <div>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            id="ute"
+            checked={uteCheckbox}
+            onChange={() => setUteCheckbox(!uteCheckbox)}
+          />
           <label>Vara utomhus</label>
         </div>
         <div>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            id="inne"
+            checked={inneCheckbox}
+            onChange={() => setInneCheckbox(!inneCheckbox)}
+          />
           <label>Vara inomhus</label>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            id="borta"
+            checked={bortaCheckbox}
+            onChange={() => setBortaCheckbox(!bortaCheckbox)}
+          />
           <label>Åka iväg</label>
         </div>
       </div>
