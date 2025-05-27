@@ -1,0 +1,20 @@
+.page-wrapper.spring {
+    background-image: url('/Img/springIMG.jpg');
+    background-size: cover;
+  }
+  
+  .page-wrapper.summer {
+    background-image: url('/Img/summerIMG.jpg');
+    background-size: cover;
+  }
+  
+  .page-wrapper.fall {
+    background-image: url('/Img/fallIMG.jpg');
+    background-size: cover;
+  }
+  
+  .page-wrapper.winter {
+    background-image: url('/Img/winterIMG.jpg');
+    background-size: cover;
+  }
+  

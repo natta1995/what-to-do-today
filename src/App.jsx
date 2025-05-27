@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { aktiviteter } from "./data/aktiviteter";
+import './App.css'
 
 function App() {
   const [budget, setBudget] = useState("Gratis");
   const [valdAktivitet, setValdAktivitet] = useState("");
+  const [season, setSeason] = useState("summer")
 
   const [plats, setPlats] = useState("inne");
   const [läge, setLäge] = useState("hemma");
@@ -25,10 +27,21 @@ function App() {
     setValdAktivitet(filtrerade[slumpIndex].text);
   }
 
+  const handleSeasonChange = (event) => {
+    const selectedSeason = event.target.getAttribute("data-season")
+    setSeason(selectedSeason)
+  }
+
   return (
-    <>
+    <div className={`page-wrapper ${season}`}>
       <div>
         <h1> Vad skall jag göra idag? </h1>
+      </div>
+      <div id="seasonsButtons">
+        <button data-season="spring" onClick={handleSeasonChange}>Vår</button>
+        <button data-season="summer" onClick={handleSeasonChange}>Sommar</button>
+        <button data-season="fall" onClick={handleSeasonChange}>Höst</button>
+        <button data-season="winter" onClick={handleSeasonChange}>Vinter</button>
       </div>
       <div>
         <h5>Jag vill vara </h5>
@@ -93,7 +106,7 @@ function App() {
         <button onClick={slumpaAktivitet}> Slumpa </button>
       </div>
       <div>{valdAktivitet && <p>{valdAktivitet}</p>}</div>
-    </>
+    </div>
   );
 }
 
