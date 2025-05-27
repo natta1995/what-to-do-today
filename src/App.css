@@ -1,43 +1,90 @@
+.page-wrapper {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*BUTTONS*/
+
+#seasonsButtons button {
+  padding: 0.5rem 1.5rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.active-button {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.page-wrapper.spring .active-button {
+  background-color: #a5d6a7;
+  color: #1b5e20;
+}
+
+.page-wrapper.summer .active-button {
+  background-color: #fff176;
+  color: #e65100;
+}
+
+.page-wrapper.fall .active-button {
+  background-color: #ffcc80;
+  color: #4e342e;
+}
+
+.page-wrapper.winter .active-button {
+  background-color: #bbdefb;
+  color: #0d47a1;
+}
 
 /* SPRING */
+
 .page-wrapper.spring {
-    background-image: url('/Img/springIMG.jpg');
-    background-size: cover;
-  }
+  background-image: url("/Img/springIMG.jpg");
+  background-size: cover;
+}
 
-  .page-wrapper.spring .season-heading {
-    color: #0a4825; 
-  }
+.page-wrapper.spring .season-heading {
+  color: #0a4825;
+}
 
-  /* SUMMER */
-  
-  .page-wrapper.summer {
-    background-image: url('/Img/summerIMG.jpg');
-    background-size: cover;
-  }
+/* SUMMER */
 
-  .page-wrapper.summer .season-heading {
-    color: #e6b800; 
-  }
+.page-wrapper.summer {
+  background-image: url("/Img/summerIMG.jpg");
+  background-size: cover;
+}
 
-  /* FALL */
-  
-  .page-wrapper.fall {
-    background-image: url('/Img/fallIMG.jpg');
-    background-size: cover;
-  }
+.page-wrapper.summer .season-heading {
+  color: #e6b800;
+}
 
-  .page-wrapper.fall .season-heading {
-    color: #ca5f14; 
-  }
+/* FALL */
 
-  /* WINTER */
-  
-  .page-wrapper.winter {
-    background-image: url('/Img/winterIMG.jpg');
-    background-size: cover;
-  }
-  
-  .page-wrapper.winter .season-heading {
-    color: #3b5998; 
-  }
+.page-wrapper.fall {
+  background-image: url("/Img/fallIMG.jpg");
+  background-size: cover;
+}
+
+.page-wrapper.fall .season-heading {
+  color: #ca5f14;
+}
+
+/* WINTER */
+
+.page-wrapper.winter {
+  background-image: url("/Img/winterIMG.jpg");
+  background-size: cover;
+}
+
+.page-wrapper.winter .season-heading {
+  color: #3b5998;
+}
