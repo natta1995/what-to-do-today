@@ -14,7 +14,9 @@ function App() {
     (aktivitet) =>
       aktivitet.plats === plats &&
       aktivitet.läge === läge &&
-      aktivitet.budget === budget
+      aktivitet.budget === budget &&
+      aktivitet.season.includes(season)
+
   );
 
   function slumpaAktivitet() {
