@@ -37,7 +37,7 @@ function App() {
   return (
     <div className={`page-wrapper ${season}`}>
       <div>
-        <h1> Vad skall jag göra idag? </h1>
+        <h1 className="season-heading"> Vad skall jag göra idag? </h1>
       </div>
       <div id="seasonsButtons">
         <button data-season="spring" onClick={handleSeasonChange}>Vår</button>

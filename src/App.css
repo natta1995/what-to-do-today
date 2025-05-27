@@ -1,20 +1,43 @@
+
+/* SPRING */
 .page-wrapper.spring {
     background-image: url('/Img/springIMG.jpg');
     background-size: cover;
   }
+
+  .page-wrapper.spring .season-heading {
+    color: #0a4825; 
+  }
+
+  /* SUMMER */
   
   .page-wrapper.summer {
     background-image: url('/Img/summerIMG.jpg');
     background-size: cover;
   }
+
+  .page-wrapper.summer .season-heading {
+    color: #e6b800; 
+  }
+
+  /* FALL */
   
   .page-wrapper.fall {
     background-image: url('/Img/fallIMG.jpg');
     background-size: cover;
   }
+
+  .page-wrapper.fall .season-heading {
+    color: #ca5f14; 
+  }
+
+  /* WINTER */
   
   .page-wrapper.winter {
     background-image: url('/Img/winterIMG.jpg');
     background-size: cover;
   }
   
+  .page-wrapper.winter .season-heading {
+    color: #3b5998; 
+  }
