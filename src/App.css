@@ -8,6 +8,30 @@
   align-items: center;
 }
 
+/* CONTENT BOX */
+
+.content-box {
+  background-color: white;
+  margin-top: 35px;
+  padding: 40px;
+  max-width: 700px;
+  width: 90%;
+
+  border-radius: 20px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* HEADING */
+.season-heading {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
 /*BUTTONS*/
 
 #seasonsButtons button {
@@ -56,6 +80,10 @@
   color: #0a4825;
 }
 
+.page-wrapper.spring .slump-button {
+  background: linear-gradient(135deg, #a8e6a3, #66bb6a);
+}
+
 /* SUMMER */
 
 .page-wrapper.summer {
@@ -65,6 +93,10 @@
 
 .page-wrapper.summer .season-heading {
   color: #e6b800;
+}
+
+.page-wrapper.summer .slump-button {
+  background: linear-gradient(135deg, #fff176, #ffb74d);
 }
 
 /* FALL */
@@ -78,6 +110,10 @@
   color: #ca5f14;
 }
 
+.page-wrapper.fall .slump-button {
+  background: linear-gradient(135deg, #ffcc80, #ff8a65);
+}
+
 /* WINTER */
 
 .page-wrapper.winter {
@@ -87,4 +123,39 @@
 
 .page-wrapper.winter .season-heading {
   color: #3b5998;
+}
+
+.page-wrapper.winter .slump-button {
+  background: linear-gradient(135deg, #bbdefb, #64b5f6);
+}
+
+/* Slump knapp */
+
+.slump-button {
+  padding: 18px 40px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.slump-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Result */
+
+.result-box {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.result-text {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
 }

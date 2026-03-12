@@ -35,9 +35,7 @@ function App() {
 
   return (
     <div className={`page-wrapper ${season}`}>
-      <div
-        style={{ backgroundColor: "white", marginTop: "35px", padding: "30px" }}
-      >
+      <div className="content-box">
         <div>
           <h1 className="season-heading"> Vad skall jag göra idag? </h1>
         </div>
@@ -130,10 +128,19 @@ function App() {
             <option value="high">+ 1000kr</option>
           </select>
         </div>
-        <div>
-          <button onClick={slumpaAktivitet}> Slumpa </button>
-        </div>
-        <div>{valdAktivitet && <p>{valdAktivitet}</p>}</div>
+        <div className="slump-container">
+        <button className="slump-button" onClick={slumpaAktivitet}>
+          🎲 Slumpa aktivitet
+        </button>
+      </div>
+        <div className="result-box">
+  {valdAktivitet && (
+    <>
+      <h2>✨ Dagens aktivitet</h2>
+      <p className="result-text">{valdAktivitet}</p>
+    </>
+  )}
+</div>
       </div>
     </div>
   );
