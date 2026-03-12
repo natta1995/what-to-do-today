@@ -3,7 +3,7 @@ import { aktiviteter } from "./data/aktiviteter";
 import "./App.css";
 
 function App() {
-  const [budget, setBudget] = useState("Gratis");
+  const [budget, setBudget] = useState("gratis");
   const [valdAktivitet, setValdAktivitet] = useState("");
   const [season, setSeason] = useState("summer");
 
@@ -15,7 +15,7 @@ function App() {
       aktivitet.plats === plats &&
       aktivitet.läge === läge &&
       aktivitet.budget === budget &&
-      aktivitet.season.includes(season)
+      aktivitet.season.includes(season),
   );
 
   function slumpaAktivitet() {
@@ -69,78 +69,76 @@ function App() {
             Vinter
           </button>
         </div>
-        <div>
-          <h5>Jag vill vara </h5>
-        </div>
-        <div>
-          <label>
+
+        <div className="radio-group">
+          <label className={`radio-card ${läge === "hemma" ? "selected" : ""}`}>
             <input
               type="radio"
               value="hemma"
               checked={läge === "hemma"}
               onChange={(e) => setLäge(e.target.value)}
             />
-            Hemma
+            🏠 Hemma
           </label>
-          <label>
+
+          <label className={`radio-card ${läge === "borta" ? "selected" : ""}`}>
             <input
               type="radio"
               value="borta"
               checked={läge === "borta"}
               onChange={(e) => setLäge(e.target.value)}
             />
-            Borta
+            🌍 Borta
           </label>
         </div>
-        <div>
-          <label>
+
+        <div className="radio-group">
+          <label className={`radio-card ${plats === "inne" ? "selected" : ""}`}>
             <input
               type="radio"
               value="inne"
               checked={plats === "inne"}
               onChange={(e) => setPlats(e.target.value)}
             />
-            Inomhus
+            🛋 Inomhus
           </label>
-          <label>
+
+          <label className={`radio-card ${plats === "ute" ? "selected" : ""}`}>
             <input
               type="radio"
               value="ute"
               checked={plats === "ute"}
               onChange={(e) => setPlats(e.target.value)}
             />
-            Utomhus
+            🌳 Utomhus
           </label>
         </div>
-        <div>
-          <h5>Hur mycket vill du spendera?</h5>
-        </div>
-        <div>
-          <label htmlFor="budget">Budget:</label>
+
+        <div className="budget-section">
           <select
             id="budget"
+            className="budget-select"
             value={budget}
             onChange={(e) => setBudget(e.target.value)}
           >
             <option value="gratis">Gratis</option>
-            <option value="small">100-200kr</option>
-            <option value="medium">400-800kr</option>
-            <option value="high">+ 1000kr</option>
+            <option value="small">100–200 kr</option>
+            <option value="medium">400–800 kr</option>
+            <option value="high">+1000 kr</option>
           </select>
         </div>
         <div className="slump-container">
-        <button className="slump-button" onClick={slumpaAktivitet}>
-          🎲 Slumpa aktivitet
-        </button>
-      </div>
+          <button className="slump-button" onClick={slumpaAktivitet}>
+            Hitta aktivitet
+          </button>
+        </div>
         <div className="result-box">
-  {valdAktivitet && (
-    <>
-      <h2>✨ Dagens aktivitet</h2>
-      <p className="result-text">{valdAktivitet}</p>
-    </>
-  )}
-</div>
+          {valdAktivitet && (
+            <>
+              <p className="result-text">{valdAktivitet}</p>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
