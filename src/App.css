@@ -3,51 +3,232 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-/* CONTENT BOX */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px;
+  box-sizing: border-box;
+}
 
 .content-box {
-  background-color: white;
-  margin-top: 35px;
+  background: rgba(255, 255, 255, 0.92);
+  width: 100%;
+  max-width: 720px;
   padding: 40px;
-  max-width: 700px;
-  width: 90%;
-
-  border-radius: 20px;
-
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border-radius: 28px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+  text-align: center;
+  backdrop-filter: blur(4px);
 }
 
-/* HEADING */
 .season-heading {
-  font-size: 32px;
-  margin-bottom: 20px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 36px;
+  margin-bottom: 22px;
 }
 
-/*BUTTONS*/
+#seasonsButtons {
+  margin-bottom: 20px;
+}
 
 #seasonsButtons button {
-  padding: 0.5rem 1.5rem;
-  margin: 0.5rem;
-  border-radius: 10px;
+  padding: 0.6rem 1.4rem;
+  margin: 0.4rem;
+  border-radius: 12px;
   border: none;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.15s ease;
 }
 
 .active-button {
-  transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.08);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.18);
+}
+
+.radio-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+.radio-card {
+  padding: 12px 20px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  background: white;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.radio-card input {
+  display: none;
+}
+
+.radio-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.radio-card.selected {
+  background: #f5f5f5;
+  border-color: #aaa;
+}
+
+.budget-select {
+  width: 100%;
+  max-width: 280px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.slump-container {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+}
+
+.slump-button {
+  padding: 16px 34px;
+  border-radius: 18px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.slump-button:hover {
+  transform: scale(1.04);
+}
+
+/* POPUP */
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.popup-modal {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  background: white;
+  padding: 45px 30px 35px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+  animation: popup 0.28s ease;
+}
+
+.popup-title {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.popup-activity-box {
+  padding: 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.popup-activity-text {
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.popup-random-button {
+  margin-top: 25px;
+  padding: 15px 28px;
+  border-radius: 18px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+}
+
+.popup-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease;
+}
+
+.popup-close:hover {
+  transform: scale(1.08);
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0.88);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ÅRSTIDER */
+
+.page-wrapper.spring {
+  background-image: url("/Img/springIMG.jpg");
+}
+
+.page-wrapper.summer {
+  background-image: url("/Img/summerIMG.jpg");
+}
+
+.page-wrapper.fall {
+  background-image: url("/Img/fallIMG.jpg");
+}
+
+.page-wrapper.winter {
+  background-image: url("/Img/winterIMG.jpg");
+}
+
+.page-wrapper.spring .season-heading {
+  color: #0a4825;
+}
+
+.page-wrapper.summer .season-heading {
+  color: #e6b800;
+}
+
+.page-wrapper.fall .season-heading {
+  color: #ca5f14;
+}
+
+.page-wrapper.winter .season-heading {
+  color: #3b5998;
 }
 
 .page-wrapper.spring .active-button {
@@ -70,49 +251,49 @@
   color: #0d47a1;
 }
 
-/* SPRING */
-
-.page-wrapper.spring {
-  background-image: url("/Img/springIMG.jpg");
-  background-size: cover;
-}
-
-.page-wrapper.spring .season-heading {
-  color: #0a4825;
-}
-
-.page-wrapper.spring .slump-button {
+.page-wrapper.spring .slump-button,
+.popup-modal.spring .popup-random-button {
   background: linear-gradient(135deg, #a8e6a3, #66bb6a);
 }
 
-.page-wrapper.spring .budget-select:focus {
-  border-color: #66bb6a;
-  box-shadow: 0 0 0 4px rgba(102, 187, 106, 0.2);
-}
-
-.page-wrapper.spring .radio-card.selected {
-  background: #e8f5e9;
-  border-color: #66bb6a;
-}
-
-/* SUMMER */
-
-.page-wrapper.summer {
-  background-image: url("/Img/summerIMG.jpg");
-  background-size: cover;
-}
-
-.page-wrapper.summer .season-heading {
-  color: #e6b800;
-}
-
-.page-wrapper.summer .slump-button {
+.page-wrapper.summer .slump-button,
+.popup-modal.summer .popup-random-button {
   background: linear-gradient(135deg, #fff176, #ffb74d);
 }
 
-.page-wrapper.summer .budget-select:focus {
-  border-color: #ffb74d;
-  box-shadow: 0 0 0 4px rgba(255, 183, 77, 0.2);
+.page-wrapper.fall .slump-button,
+.popup-modal.fall .popup-random-button {
+  background: linear-gradient(135deg, #ffcc80, #ff8a65);
+}
+
+.page-wrapper.winter .slump-button,
+.popup-modal.winter .popup-random-button {
+  background: linear-gradient(135deg, #bbdefb, #64b5f6);
+}
+
+.popup-modal.spring {
+  background: linear-gradient(180deg, #f3fff3, #ffffff);
+  border: 2px solid #a5d6a7;
+}
+
+.popup-modal.summer {
+  background: linear-gradient(180deg, #fffef0, #ffffff);
+  border: 2px solid #ffe082;
+}
+
+.popup-modal.fall {
+  background: linear-gradient(180deg, #fff4ec, #ffffff);
+  border: 2px solid #ffcc80;
+}
+
+.popup-modal.winter {
+  background: linear-gradient(180deg, #eef7ff, #ffffff);
+  border: 2px solid #bbdefb;
+}
+
+.page-wrapper.spring .radio-card.selected {
+  background: #d2ecd4;
+  border-color: #66bb6a;
 }
 
 .page-wrapper.summer .radio-card.selected {
@@ -120,50 +301,9 @@
   border-color: #ffb74d;
 }
 
-
-/* FALL */
-
-.page-wrapper.fall {
-  background-image: url("/Img/fallIMG.jpg");
-  background-size: cover;
-}
-
-.page-wrapper.fall .season-heading {
-  color: #ca5f14;
-}
-
-.page-wrapper.fall .slump-button {
-  background: linear-gradient(135deg, #ffcc80, #ff8a65);
-}
-
-.page-wrapper.fall .budget-select:focus {
-  border-color: #ff8a65;
-  box-shadow: 0 0 0 4px rgba(255, 138, 101, 0.2);
-}
-
 .page-wrapper.fall .radio-card.selected {
   background: #fff3e0;
   border-color: #ff8a65;
-}
-
-/* WINTER */
-
-.page-wrapper.winter {
-  background-image: url("/Img/winterIMG.jpg");
-  background-size: cover;
-}
-
-.page-wrapper.winter .season-heading {
-  color: #3b5998;
-}
-
-.page-wrapper.winter .slump-button {
-  background: linear-gradient(135deg, #bbdefb, #64b5f6);
-}
-
-.page-wrapper.winter .budget-select:focus {
-  border-color: #64b5f6;
-  box-shadow: 0 0 0 4px rgba(100, 181, 246, 0.2);
 }
 
 .page-wrapper.winter .radio-card.selected {
@@ -171,89 +311,14 @@
   border-color: #64b5f6;
 }
 
-/* Slump knapp */
-
-.slump-button {
-  margin-top: 25px;
-  padding: 18px 40px;
-  font-size: 20px;
-  font-weight: bold;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  color: white;
-  transition: all 0.2s ease;
-}
-
-.slump-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Result */
-
-.result-box {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.result-text {
-  font-size: 22px;
-  font-weight: bold;
-  color: #333;
-}
-
-/* Budget section */
-
-.budget-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 15px;
-  width: 100%;
-  max-width: 320px;
-}
-
-.budget-label {
-  font-weight: 600;
-  font-size: 16px;
-  color: #333;
-}
-
-.budget-select {
-  width: 100%;
-  padding: 14px 16px;
-  font-size: 16px;
-  border-radius: 14px;
-  border: 1px solid #ddd;
-  background-color: white;
-  color: #333;
-  cursor: pointer;
-  outline: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  transition: all 0.2s ease;
-
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  background-image: linear-gradient(45deg, transparent 50%, #666 50%),
-    linear-gradient(135deg, #666 50%, transparent 50%);
-  background-position: calc(100% - 20px) calc(50% - 3px),
-    calc(100% - 14px) calc(50% - 3px);
-  background-size: 6px 6px, 6px 6px;
-  background-repeat: no-repeat;
-}
-
-.budget-select:hover {
-  border-color: #bbb;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
-}
+/* RADIO BUTTONS */
 
 .radio-group {
   display: flex;
+  justify-content: center;
   gap: 12px;
-  margin-top: 10px;
+  margin: 12px 0;
+  flex-wrap: wrap;
 }
 
 .radio-card {
@@ -261,12 +326,14 @@
   border-radius: 14px;
   border: 1px solid #ddd;
   cursor: pointer;
-  font-weight: 500;
   background: white;
   transition: all 0.2s ease;
+  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 6px;
+  min-width: 140px;
+  justify-content: center;
 }
 
 .radio-card input {
@@ -274,12 +341,13 @@
 }
 
 .radio-card:hover {
-  border-color: #bbb;
   transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-color: #bbb;
 }
 
 .radio-card.selected {
   background: #f5f5f5;
-  border-color: #999;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-color: #aaa;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }

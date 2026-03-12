@@ -10,22 +10,26 @@ function App() {
   const [plats, setPlats] = useState("inne");
   const [läge, setLäge] = useState("hemma");
 
+  const [showPopup, setShowPopup] = useState(false);
+
   const filtrerade = aktiviteter.filter(
     (aktivitet) =>
       aktivitet.plats === plats &&
       aktivitet.läge === läge &&
       aktivitet.budget === budget &&
-      aktivitet.season.includes(season),
+      aktivitet.season.includes(season)
   );
 
   function slumpaAktivitet() {
     if (filtrerade.length === 0) {
-      setValdAktivitet("Inga aktiviteter hittades.");
+      setValdAktivitet("Tyvärr hittade jag ingen aktivitet.");
+      setShowPopup(true);
       return;
     }
 
     const slumpIndex = Math.floor(Math.random() * filtrerade.length);
     setValdAktivitet(filtrerade[slumpIndex].text);
+    setShowPopup(true);
   }
 
   const handleSeasonChange = (event) => {
@@ -33,12 +37,26 @@ function App() {
     setSeason(selectedSeason);
   };
 
+  const getSeasonText = () => {
+  switch (season) {
+    case "spring":
+      return "🌸 Perfekt för en vårdag!";
+    case "summer":
+      return "☀️ En idé för en härlig sommardag!";
+    case "fall":
+      return "🍂 Något mysigt för hösten!";
+    case "winter":
+      return "❄️ En aktivitet för vinterdagar!";
+    default:
+      return "Här är ett förslag:";
+  }
+};
+
   return (
     <div className={`page-wrapper ${season}`}>
       <div className="content-box">
-        <div>
-          <h1 className="season-heading"> Vad skall jag göra idag? </h1>
-        </div>
+        <h1 className="season-heading">Aktivitetsgeneratorn</h1>
+
         <div id="seasonsButtons">
           <button
             data-season="spring"
@@ -47,6 +65,7 @@ function App() {
           >
             Vår
           </button>
+
           <button
             data-season="summer"
             onClick={handleSeasonChange}
@@ -54,6 +73,7 @@ function App() {
           >
             Sommar
           </button>
+
           <button
             data-season="fall"
             onClick={handleSeasonChange}
@@ -61,6 +81,7 @@ function App() {
           >
             Höst
           </button>
+
           <button
             data-season="winter"
             onClick={handleSeasonChange}
@@ -69,7 +90,6 @@ function App() {
             Vinter
           </button>
         </div>
-
         <div className="radio-group">
           <label className={`radio-card ${läge === "hemma" ? "selected" : ""}`}>
             <input
@@ -113,33 +133,43 @@ function App() {
             🌳 Utomhus
           </label>
         </div>
+        <select
+          className="budget-select"
+          value={budget}
+          onChange={(e) => setBudget(e.target.value)}
+        >
+          <option value="gratis">Gratis</option>
+          <option value="small">100-200 kr</option>
+          <option value="medium">400-800 kr</option>
+          <option value="high">+1000 kr</option>
+        </select>
 
-        <div className="budget-section">
-          <select
-            id="budget"
-            className="budget-select"
-            value={budget}
-            onChange={(e) => setBudget(e.target.value)}
-          >
-            <option value="gratis">Gratis</option>
-            <option value="small">100–200 kr</option>
-            <option value="medium">400–800 kr</option>
-            <option value="high">+1000 kr</option>
-          </select>
-        </div>
         <div className="slump-container">
           <button className="slump-button" onClick={slumpaAktivitet}>
-            Hitta aktivitet
+             Hitta aktivitet
           </button>
         </div>
-        <div className="result-box">
-          {valdAktivitet && (
-            <>
-              <p className="result-text">{valdAktivitet}</p>
-            </>
-          )}
-        </div>
       </div>
+
+      {showPopup && (
+        <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+          <div
+            className={`popup-modal ${season}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="popup-close"
+              onClick={() => setShowPopup(false)}
+            >
+              ✕
+            </button>
+            <div className="popup-activity-box">
+              <h2 className="popup-title">{getSeasonText()}</h2>
+              <p className="popup-activity-text">{valdAktivitet}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
